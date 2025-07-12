@@ -90,13 +90,13 @@
       "CreateChatResponse": {
         "type": "object",
         "properties": {
-          "url": { "type": "string" },
-          "model": { "type": "string" },
-          "prompt": { "type": "string" },
-          "language": { "type": "string" },
-          "output_format": { "type": "string" },
-          "output": { "type": "string", "description": "The generated chat output." },
-          "video_duration": { "type": "integer", "description": "Duration of the video in minutes or seconds." }
+          "url": { "type": "https://www.youtube.com/watch?v=wv6TaPbnBp4" },
+          "model": { "type": "bump-1.0" },
+          "prompt": { "type": "What is the main message of this video?" },
+          "language": { "type": "en" },
+          "output_format": { "type": "text" },
+          "output": { "type": "This is an example chat output for demonstration purposes", "description": "The generated chat output." },
+          "video_duration": { "type": "10", "description": "Duration of the video in minutes or seconds." }
         }
       }
     },
