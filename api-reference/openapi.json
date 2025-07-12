@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "OpenAPI Bumpups Chat API",
+    "description": "API for generating interactive chat responses for YouTube videos using the bump-1.0 model.",
     "license": {
       "name": "MIT"
     },
@@ -10,143 +10,42 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.bumpups.com",
+      "description": "Production server"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "ApiKeyAuth": []
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/chat": {
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Creates an interactive chat response for a given YouTube video using the bump-1.0 model. Provide the video URL and an optional prompt. If no prompt is provided, the API returns a summary of the video content.",
+        "security": [
+          { "ApiKeyAuth": [] }
+        ],
         "requestBody": {
-          "description": "Plant to add to the store",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/CreateChatRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "description": "Success - A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateChatResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -154,63 +53,58 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "CreateChatRequest": {
         "type": "object",
+        "required": ["url"],
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "url": {
+            "type": "string",
+            "description": "The YouTube video URL."
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "model": {
+            "type": "string",
+            "enum": ["bump-1.0"],
+            "default": "bump-1.0",
+            "description": "The model used for generating the chat response."
+          },
+          "prompt": {
+            "type": "string",
+            "maxLength": 500,
+            "default": "summary",
+            "description": "The message or query about the video. Prompts longer than 500 characters will be cut off."
+          },
+          "language": {
+            "type": "string",
+            "enum": ["en", "hi", "es", "pt", "ru"],
+            "default": "en",
+            "description": "A two-letter language code for the response."
+          },
+          "output_format": {
+            "type": "string",
+            "enum": ["text", "markdown"],
+            "default": "text",
+            "description": "The desired output format."
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "CreateChatResponse": {
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
+          "url": { "type": "string" },
+          "model": { "type": "string" },
+          "prompt": { "type": "string" },
+          "language": { "type": "string" },
+          "output_format": { "type": "string" },
+          "output": { "type": "string", "description": "The generated chat output." },
+          "video_duration": { "type": "integer", "description": "Duration of the video in minutes or seconds." }
         }
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     }
   }
