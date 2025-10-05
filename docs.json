@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Genie Analyst",
   "colors": {
-    "primary": "#FFA07A",
-    "light": "#FFD966",
+    "primary": "#0f72d1",
+    "light": "#666",
     "dark": "#FF7F24"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/faviconIco.webp",
   "navigation": {
     "tabs": [
       {
@@ -96,7 +96,7 @@
     "socials": {
       "x": "https://x.com/mintlify",
       "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://www.linkedin.com/company/genieanalyst/"
     }
   }
 }
