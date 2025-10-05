@@ -58,11 +58,6 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Community",
           "href": "https://mintlify.com/community",
           "icon": "slack"
@@ -71,6 +66,11 @@
           "anchor": "Blog",
           "href": "https://mintlify.com/blog",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "FAQ's",
+          "href": "https://mintlify.com/docs",
+          "icon": "book-open-cover"
         }
       ]
     }
@@ -80,16 +80,11 @@
     "dark": "/logo/WhiteLogo.png"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+   
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Cotact Us",
+      "href": "https://genieanalyst.com/contact-us"
     }
   },
   "footer": {
