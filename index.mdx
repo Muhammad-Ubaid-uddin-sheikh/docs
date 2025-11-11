@@ -1,7 +1,29 @@
 ---
 title: "Welcome to GenieAnalyst"
-description: "GenieAnalyst is an AI assistant designed for statistical analysis, data science, and computations. It utilizes various large language models (LLMs) to find the best one for each task and writes code to analyze your data based on your prompts. The end result is an intuitive way to analyze and visualize data without needing to code, making statistical analysis accessible to everyone."
 ---
+
+#### **Overview**
+
+Genie Analyst is a secure, enterprise-grade AI analytics platform that enables organizations to interact with their business data through natural language. Unlike public AI tools, Genie Analyst operates within a Private Multi-LLM architecture, ensuring that all data stays encrypted, compliant, and isolated from external environments. It empowers decision-makers to ask complex business questions — and receive validated, insight-rich answers in seconds, not months.
+
+**Core Capabilities**
+
+- **Natural Language Querying –** Ask business questions directly in plain English (or other
+
+  supported languages) and receive precise analytical insights.
+- **Private Multi-LLM Engine –** Combines multiple large language models within a secure
+
+  environment for better accuracy, context, and reasoning.
+- **Agent-Oriented Framework –** A network of specialized AI agents that handle data
+
+  retrieval, processing, validation, and presentation autonomously.
+- **Full Data Privacy & Compliance –** Compliant with SOC 2 Type II, TX-RAMP, and in progress toward GDPR certification. Genie never shares or trains on your data.
+- **Seamless Integrations –** Connects with SAP, MongoDB, Azure SQL, Google Sheets,
+
+  AWS, and internal data vaults through secure connectors.
+- **Scalable Infrastructure –** Built on Azure Cloud with local secure vault options for hybrid or
+
+  on-premise deployments.
 
 <img
   className="block dark:hidden"
@@ -11,24 +33,50 @@ description: "GenieAnalyst is an AI assistant designed for statistical analysis,
 
 <img
   className="hidden dark:block"
-  src="/bumpoverview.jpeg"
+  src="/a5857027-9178-41b6-a106-2002aa5039c2.png"
   alt="Hero Dark"
   title={true}
 />
 
-#### **Introduction**
+#### **Architecture & Data Flow**
 
-The Bumpups API leverages advanced video processing to convert raw video content into valuable, interactive outputs:
+- **Connect to Data Sources –** Securely connects with enterprise databases, CRMs, ERPs,
 
-- **Summaries:** Automatically generate concise overviews for rapid understanding.
-- **Timestamps:** Identify key moments to quickly navigate video content.
-- **Interactive Querying:** Pose targeted questions and receive context-aware responses.
+  and vaults.
+- **Prompt Received –** Users submit questions or analytical tasks through Genie’s
 
-We are actively expanding our platform to integrate with additional sources such as Google Drive, Zoom, and more, further broadening integration possibilities.
+  interface.
+- **Intent Understanding –** The system interprets the context and breaks down the query
 
-#### **To begin using the Bumpups API:**
+  into structured analytical steps.
+- **Query Generation –** Genie writes optimized SQL or API queries for the relevant database.
+- **Data Retrieval & Cleaning –**  Extracted data is validated, cleaned, and normalized.
+- **Multi-Source Reasoning –** Genie analyzes internal databases, searches private vaults,
 
-1. **Register**:\
+  applies its own reasoning, and performs secure web lookups when needed.
+- **Answer Validation –** Each response is verified through consistency checks. If the data is
+
+  insufficient or ambiguous, Genie will never provide an incorrect answer — it instead asks
+
+  the user for clarification.
+- **Result Presentation –** Insights are displayed as dashboards, charts, or structured reports for immediate decision-making.
+
+<img
+  className="block dark:hidden"
+  src="/images/hero-light.png"
+  alt="Hero Light"
+/>
+
+<img
+  className="hidden dark:block mx-auto"
+  src="/abstract-monochrome-mesh-sphere-dark-background1.png"
+  alt="Hero Dark"
+  title={true}
+/>
+
+#### **##Architecture & Data Flow**
+
+1. **AI Agents in Genie Analyst**\
    Create an account on the [**Bumpups.**](https://bumpups.com/)
 2. **Obtain an API Key**:\
    After logging in, go to **Settings** \> **API**.\
