@@ -18,8 +18,8 @@
             "pages": [
               "index",
               "quickstart",
-              "development",
-              "faq"
+              "development"
+            
             ]
           },
           {
@@ -70,7 +70,7 @@
         },
         {
           "anchor": "FAQ's",
-          "href": "https://mintlify.com/blog",
+          "href": "https://documentation.genieanalyst.com/faq",
           "icon": "book-open-cover"
         }
       ]
