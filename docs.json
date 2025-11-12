@@ -18,7 +18,8 @@
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "development",
+              "faq"
             ]
           },
           {
@@ -69,7 +70,7 @@
         },
         {
           "anchor": "FAQ's",
-          "href": "https://mintlify.com/docs",
+          "href": "https://mintlify.com/blog",
           "icon": "book-open-cover"
         }
       ]
@@ -80,10 +81,9 @@
     "dark": "/logo/WhiteLogo.png"
   },
   "navbar": {
-   
     "primary": {
       "type": "button",
-      "label": "Cotact Us",
+      "label": "Contact Us",
       "href": "https://genieanalyst.com/contact-us"
     }
   },
